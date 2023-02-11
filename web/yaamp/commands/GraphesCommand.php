@@ -89,6 +89,7 @@ class GraphesCommand extends CConsoleCommand
 				$fill = new db_hashrate;
 				$fill->isNewRecord = true;
 				$fill->time = $t2 + 900;
+				$last_row = clone($row);
 				if ($d > 3600)
 					$fill->hashrate = 0;
 				else
@@ -101,7 +102,7 @@ class GraphesCommand extends CConsoleCommand
 				$added += $fill->save();
 			}
 			$t2 = $t;
-			$last_row = clone($row);
+			//$last_row = clone($row);
 		}
 		echo count($data)." records for $algo ($added added)\n";
 		return $added;
